@@ -127,6 +127,8 @@ button:hover {
 .row{
   display:flex;
   gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 .small{
@@ -291,7 +293,74 @@ rbna ye5aleky leya ya kenzi w yeg3alek mn naseeby w y2arabek meni w y7anen 2lbk 
 <div class="floating-heart" style="bottom:30%; right:15%; font-size:16px;">❤️</div>
 </div>
 
-<!-- 6 question -->
+<!-- 6 trivia 1 -->
+<div class="slide">
+<h1>Trivia Time! ❤️</h1>
+<p>
+Let's play a little game about me before the big question.  
+What style do I usually dress in? (Old money vibes!)
+</p>
+<div class="row">
+<button onclick="correctTrivia()">Beige or Navy Blue</button>
+<button onclick="wrongTrivia()">Bright Reds and Yellows</button>
+</div>
+<div class="floating-heart" style="top:5%; right:5%; font-size:24px;">👔</div>
+</div>
+
+<!-- 7 trivia 2 -->
+<div class="slide">
+<h1>Trivia Time! ❤️</h1>
+<p>
+I'm obsessed with cars! Which brand do I favor?  
+(Google the options if you don't know them!)
+</p>
+<div class="row">
+<button onclick="correctTrivia()">BMW over Mercedes</button>
+<button onclick="wrongTrivia()">Mercedes over BMW</button>
+</div>
+<div class="floating-heart" style="top:10%; left:10%; font-size:22px;">🚗</div>
+</div>
+
+<!-- 8 trivia 3 -->
+<div class="slide">
+<h1>Trivia Time! ❤️</h1>
+<p>
+What's my dream BMW? And which Mercedes SUV do I like more than the BMW X6?  
+(Google BMW M8 Competition and Mercedes GLE63s!)
+</p>
+<div class="row">
+<button onclick="correctTrivia()">BMW M8 Competition & Mercedes GLE63s</button>
+<button onclick="wrongTrivia()">BMW X6 & Mercedes G-Class</button>
+</div>
+<div class="floating-heart" style="bottom:20%; right:10%; font-size:20px;">🏎️</div>
+</div>
+
+<!-- 9 trivia 4 -->
+<div class="slide">
+<h1>Trivia Time! ❤️</h1>
+<p>
+Last one! What's my favorite football team?  
+(Google Liverpool FC if you want to see why!)
+</p>
+<div class="row">
+<button onclick="correctTrivia()">Liverpool</button>
+<button onclick="wrongTrivia()">Manchester United</button>
+</div>
+<div class="floating-heart" style="top:15%; right:15%; font-size:18px;">⚽</div>
+</div>
+
+<!-- 10 care -->
+<div class="slide">
+<h1>I Care About You</h1>
+<p>
+Care is such a big word, Kenzi, and it means everything to me when it comes to you. I care about your feelings deeply—every emotion you feel, whether it's joy, sadness, or frustration, I want to be there to share it with you. I care about your thoughts, your dreams, your fears, and even the little things like how your day went or what made you smile today. My care for you isn't just a feeling; it's an action. I care enough to listen when you talk, to support you in your goals, to be patient when things are tough, and to show up every single day. You deserve someone who cares unconditionally, and that's me—I'm committed to proving it through my words and deeds. I care about you more than I can express, and I hope you feel that in everything I do. You're my priority, my love, and my everything, and my care for you only grows stronger with time. I promise to always care for you like you deserve, with all my heart.
+</p>
+<button onclick="next()">Next</button>
+<div class="floating-heart" style="top:10%; left:15%; font-size:21px;">💝</div>
+<div class="floating-heart" style="bottom:25%; right:20%; font-size:19px;">❤️</div>
+</div>
+
+<!-- 11 question -->
 <div class="slide">
 <h1>February 14 ❤️</h1>
 <p>
@@ -311,7 +380,7 @@ will you be my Valentine?
 <div class="floating-heart" style="bottom:40%; left:5%; font-size:20px;">💕</div>
 </div>
 
-<!-- 7 yes -->
+<!-- 12 yes -->
 <div class="slide">
 <h1>You said YES ❤️</h1>
 <p>
@@ -321,7 +390,7 @@ Thank you for choosing me myl.
 </p>
 </div>
 
-<!-- 8 no -->
+<!-- 13 no -->
 <div class="slide">
 <h1>Oh no 💔</h1>
 <p>
@@ -342,6 +411,11 @@ Please press back and choose yes or my heart will cry.
 <span class="dot" data-slide="5"></span>
 <span class="dot" data-slide="6"></span>
 <span class="dot" data-slide="7"></span>
+<span class="dot" data-slide="8"></span>
+<span class="dot" data-slide="9"></span>
+<span class="dot" data-slide="10"></span>
+<span class="dot" data-slide="11"></span>
+<span class="dot" data-slide="12"></span>
 </div>
 
 </div>
@@ -361,9 +435,20 @@ function show(i) {
 }
 
 function next() { show(current + 1); }
-function yes() { show(6); hearts(); confetti(); }
-function no() { show(7); }
-function back() { show(5); }
+function yes() { show(11); hearts(); confetti(); }
+function no() { show(12); }
+function back() { show(10); }
+
+// Trivia functions
+function correctTrivia() {
+  alert("Correct! 😊 You know me well. (Or maybe you guessed right!)");
+  next();
+}
+
+function wrongTrivia() {
+  alert("Nope, but that's okay! Check the correct one and Google it for fun. ❤️");
+  next();
+}
 
 // Add click events to dots
 dots.forEach((d, index) => {
