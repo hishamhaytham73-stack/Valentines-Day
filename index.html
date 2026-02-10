@@ -20,7 +20,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow:hidden;
+  overflow:visible; /* Changed to visible to allow hearts to float out */
 }
 
 /* phone frame */
@@ -45,14 +45,16 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  transition:0.6s;
+  transition:transform 0.6s ease-in-out;
   transform:translateX(100%);
   background:linear-gradient(160deg,#ff8fab,#ffc2d1,#ffe5ec);
   color:white;
+  z-index:0;
 }
 
 .slide.active{
   transform:translateX(0);
+  z-index:1;
 }
 
 h1{
@@ -86,6 +88,31 @@ button{
   font-size:11px;
   opacity:0.85;
   margin-top:8px;
+}
+
+/* progress dots */
+.dots{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+  z-index:2;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:white;
+  opacity:0.5;
+  cursor:pointer;
+  transition:opacity 0.3s;
+}
+
+.dot.active{
+  opacity:1;
 }
 
 /* hearts */
@@ -206,32 +233,55 @@ please press back and choose yes or my heart will cry
 <button onclick="back()">Go back</button>
 </div>
 
+<!-- progress dots -->
+<div class="dots">
+<span class="dot active" data-slide="0"></span>
+<span class="dot" data-slide="1"></span>
+<span class="dot" data-slide="2"></span>
+<span class="dot" data-slide="3"></span>
+<span class="dot" data-slide="4"></span>
+<span class="dot" data-slide="5"></span>
+<span class="dot" data-slide="6"></span>
+<span class="dot" data-slide="7"></span>
+</div>
+
 </div>
 
 <script>
-let slides=document.querySelectorAll(".slide");
-let current=0;
+let slides = document.querySelectorAll(".slide");
+let dots = document.querySelectorAll(".dot");
+let current = 0;
 
-function show(i){
-  slides.forEach(s=>s.classList.remove("active"));
+function show(i) {
+  if (i < 0 || i >= slides.length) return;
+  slides.forEach(s => s.classList.remove("active"));
   slides[i].classList.add("active");
-  current=i;
+  dots.forEach(d => d.classList.remove("active"));
+  dots[i].classList.add("active");
+  current = i;
 }
 
-function next(){ show(current+1); }
-function yes(){ show(6); hearts(); }
-function no(){ show(7); }
-function back(){ show(5); }
+function next() { show(current + 1); }
+function yes() { show(6); hearts(); }
+function no() { show(7); }
+function back() { show(5); }
 
-function hearts(){
-  for(let i=0;i<40;i++){
-    let h=document.createElement("div");
-    h.innerHTML="❤";
-    h.className="heart";
-    h.style.left=Math.random()*350+"px";
-    h.style.fontSize=(14+Math.random()*20)+"px";
-    h.style.animationDuration=(3+Math.random()*3)+"s";
-    document.querySelector(".app").appendChild(h);
+// Add click events to dots
+dots.forEach((d, index) => {
+  d.onclick = () => show(index);
+});
+
+function hearts() {
+  let appRect = document.querySelector(".app").getBoundingClientRect();
+  for (let i = 0; i < 40; i++) {
+    let h = document.createElement("div");
+    h.innerHTML = "❤";
+    h.className = "heart";
+    h.style.left = (appRect.left + Math.random() * appRect.width) + "px";
+    h.style.bottom = (window.innerHeight - appRect.bottom - 20) + "px";
+    h.style.fontSize = (14 + Math.random() * 20) + "px";
+    h.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(h);
   }
 }
 </script>
