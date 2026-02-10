@@ -8,161 +8,94 @@
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(135deg,#ff8fb1,#ffccd5,#ffe5ec);
-  color:#fff;
+  background:linear-gradient(135deg,#ff9ab5,#ffc2d1,#ffe5ec);
+  color:white;
   text-align:center;
   overflow-x:hidden;
 }
 
 section{
-  padding:80px 20px;
+  display:none;
   min-height:100vh;
+  padding:60px 25px;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
 }
 
-h1{
-  font-size:3em;
-  margin-bottom:20px;
-}
+.active{ display:flex; }
+
+h1{ font-size:3em; margin-bottom:20px; }
 
 p{
-  max-width:800px;
-  line-height:1.8;
-  font-size:1.2em;
+  max-width:850px;
+  line-height:1.9;
+  font-size:1.15em;
 }
 
 button{
-  padding:18px 40px;
-  font-size:20px;
+  margin:15px;
+  padding:15px 35px;
   border:none;
   border-radius:30px;
-  background:#fff;
-  color:#ff4d6d;
+  font-size:18px;
   cursor:pointer;
-  margin-top:30px;
+  background:white;
+  color:#ff4d6d;
   transition:0.3s;
 }
 
-button:hover{
-  transform:scale(1.1);
-}
+button:hover{ transform:scale(1.1); }
+
+.small{ font-size:0.7em; opacity:0.8; }
 
 .heart{
   position:fixed;
+  top:-20px;
   color:#ff4d6d;
-  animation:fall 4s linear infinite;
+  animation:fall 5s linear infinite;
 }
 
 @keyframes fall{
-  0%{transform:translateY(-10vh)}
-  100%{transform:translateY(110vh)}
-}
-
-.hidden{
-  display:none;
+  to{ transform:translateY(110vh); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Intro -->
+<!-- Page 1 Intro -->
+<section class="active">
+<h1>Hi Kenzi ❤️</h1>
+<p>
+I made this little world just for you  
+because normal messages are not enough for how much I feel for you  
+so take my hand and go through it with me
+</p>
+<button onclick="next()">Start</button>
+</section>
+
+<!-- Page 2 Love -->
 <section>
-  <h1>Hi Kenzi ❤️</h1>
-  <p>
-  I made something special just for you…  
-  click below and let me talk to you from my heart.
-  </p>
-  <button onclick="next()">Start</button>
+<h1>My Koki My Baby</h1>
+<p>
+From the moment you entered my life everything became softer and brighter  
+I love your smile your voice your laugh your kindness your eyes your tiny habits and the way you talk  
+I love every little detail about you  
+You are my comfort my peace and my favorite person in this entire world  
+Even with the distance between us my heart has never felt closer to anyone the way it feels with you  
+Every night I wish you were next to me and every morning you are the first thought in my head  
+b7bk yro7 ro7 ro7 2lbi bmoot feky
+</p>
+<button onclick="next()">Next ❤️</button>
 </section>
 
-<!-- Love Letter -->
-<section class="hidden">
-  <h1>My Sweet Koki, My Baby</h1>
-  <p>
-  From the moment you came into my life, everything changed.  
-  You became my comfort, my happiness, my safe place.  
-  I love your smile, your voice, your laugh, your little habits, the way you talk, the way you care, the way you exist.  
-  I love every tiny detail about you, even the ones you don’t notice.  
-  Distance may separate us, but nothing in this world could ever separate my heart from yours.  
-  Every day I wake up and think about you, and every night I sleep wishing you were beside me.
-  </p>
-  <button onclick="next()">Next ❤️</button>
-</section>
-
-<!-- Apology -->
-<section class="hidden">
-  <h1>I’m Sorry…</h1>
-  <p>
-  Kenzi, I know I’ve made mistakes.  
-  Too many sometimes.  
-  And I hate that I ever hurt you or disappointed you.  
-  I’m truly sorry for every single one of them.  
-  Please believe me when I say I’m trying to change, trying to grow, trying to be better — not just for me, but for YOU.  
-  You deserve the best version of me, and I promise I will fight every day to become that man.  
-  I want to deserve your love, not just receive it.
-  </p>
-  <button onclick="next()">Next</button>
-</section>
-
-<!-- Promises -->
-<section class="hidden">
-  <h1>My Promise To You</h1>
-  <p>
-  I promise to love you louder.  
-  I promise to listen more.  
-  I promise to protect your heart like it’s my own.  
-  I promise to never stop choosing you.  
-  I promise to be patient, kinder, stronger.  
-  I promise to always remind you how special you are.  
-  Because honestly… I can’t imagine my life without you.  
-  You’re not just my girlfriend — you’re my home.
-  </p>
-  <button onclick="next()">Final Message</button>
-</section>
-
-<!-- Valentine Question -->
-<section class="hidden">
-  <h1>February 14 💌</h1>
-  <p>
-  So today, from my heart to yours…  
-  from Hisham, the guy who loves you more than anything…  
-  my Koki, my baby…  
-  will you make me the happiest man alive?
-  </p>
-
-  <h1 style="font-size:3.5em">Will you be my Valentine? ❤️</h1>
-
-  <button onclick="yes()">YES</button>
-</section>
-
-<script>
-let sections=document.querySelectorAll("section");
-let index=0;
-
-function next(){
-  sections[index].classList.add("hidden");
-  index++;
-  sections[index].classList.remove("hidden");
-}
-
-function yes(){
-  alert("You just made Hisham the happiest man alive ❤️ I love you forever Kenzi!");
-
-  for(let i=0;i<60;i++){
-    let heart=document.createElement("div");
-    heart.innerHTML="❤";
-    heart.className="heart";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(20+Math.random()*30)+"px";
-    heart.style.animationDuration=(2+Math.random()*3)+"s";
-    document.body.appendChild(heart);
-  }
-}
-</script>
-
-</body>
-</html>
+<!-- Page 3 Apology expanded -->
+<section>
+<h1>I am Truly Sorry</h1>
+<p>
+Kenzi I need you to know how deeply sorry I am for every mistake I have ever made  
+For every moment I upset you for every time I was careless or immature or not the man you deserved  
+Sometimes I think about those moments and my heart hurts because the last person I ever want to hurt is you  
+You gave me love and pati
