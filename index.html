@@ -98,4 +98,110 @@ b7bk yro7 ro7 ro7 2lbi bmoot feky
 Kenzi I need you to know how deeply sorry I am for every mistake I have ever made  
 For every moment I upset you for every time I was careless or immature or not the man you deserved  
 Sometimes I think about those moments and my heart hurts because the last person I ever want to hurt is you  
-You gave me love and pati
+You gave me love and patience and I should have protected that better  
+Please believe me when I say I am changing and learning and growing  
+Not just saying words but actually trying every day to fix myself  
+I want to be someone you feel safe with someone you trust completely someone who makes your life easier not harder  
+I promise I am working on becoming that man for you
+</p>
+<button onclick="next()">Next</button>
+</section>
+
+<!-- Page 4 Promises expanded -->
+<section>
+<h1>My Promises To You</h1>
+<p>
+I promise to listen more and argue less  
+I promise to respect you protect you and support every dream you have  
+I promise to celebrate your wins and hold you during your bad days  
+I promise to always choose you even when things get hard  
+I promise to be patient kinder calmer and stronger  
+I promise to work on myself so you never feel alone in this relationship  
+I promise to fight for us every single day because losing you is not something I could ever survive  
+You are my home my future my everything
+</p>
+<button onclick="next()">Next</button>
+</section>
+
+<!-- Page 5 Prayer slide -->
+<section>
+<h1>A Prayer For You</h1>
+<p>
+rbna ye5aleky leya ya kenzi w yeg3alek mn naseeby w y2arabek meni w y7anen 2lbk 3laya w ywafa2ek fe derastek w gam3etek w 7yatk, rbna ma ye7remny mnk ana maleesh 8erk fl donya de kolaha
+</p>
+<button onclick="next()">Next</button>
+</section>
+
+<!-- Page 6 Valentine Question -->
+<section id="question">
+<h1>February 14 ❤️</h1>
+<p>
+From Hisham  
+the guy who loves you more than anything in this life  
+the guy who cannot imagine a single day without you  
+the guy whose heart belongs only to you  
+will you make me the happiest man alive
+</p>
+
+<h1>Will you be my Valentine</h1>
+<p class="small">(how was your exam sa7ee7?)</p>
+
+<div>
+<button onclick="yes()">YES ❤️</button>
+<button onclick="no()">NO</button>
+</div>
+</section>
+
+<!-- YES page -->
+<section id="yesPage">
+<h1>You said YES ❤️</h1>
+<p>
+You just made me the happiest man alive  
+Thank you for choosing me and loving me  
+I love you forever Kenzi
+</p>
+</section>
+
+<!-- NO page -->
+<section id="noPage">
+<h1>Oh no 💔</h1>
+<p>
+If you pressed no by mistake please go back because my heart just broke a little  
+But even if you ever feel unsure I will still love you and fight for you  
+Because you are worth everything to me
+</p>
+<button onclick="goBack()">Go Back</button>
+</section>
+
+<script>
+let sections=document.querySelectorAll("section");
+let current=0;
+
+function show(i){
+  sections.forEach(s=>s.classList.remove("active"));
+  sections[i].classList.add("active");
+  current=i;
+}
+
+function next(){ show(current+1); }
+
+function yes(){
+  show(6);
+  for(let i=0;i<70;i++){
+    let h=document.createElement("div");
+    h.innerHTML="❤";
+    h.className="heart";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(20+Math.random()*30)+"px";
+    h.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(h);
+  }
+}
+
+function no(){ show(7); }
+
+function goBack(){ show(5); }
+</script>
+
+</body>
+</html>
